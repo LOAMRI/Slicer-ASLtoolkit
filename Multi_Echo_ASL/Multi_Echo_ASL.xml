@@ -2,76 +2,72 @@
 <executable>
   <category>Arterial Sping Labelling</category>
   <index>0</index>
-  <title>Multi_Echo_ASL</title>
+  <title>Multi Echo ASL</title>
   <description><![CDATA[Calculates the Multi Echo ASL image reconstruction.]]></description>
   <version>0.1.0.</version>
-  <documentation-url>https://github.com/username/project</documentation-url>
+  <documentation-url>https://github.com/LOAMRI/Slicer-ASLtoolkit</documentation-url>
   <license/>
-  <contributor>Andras Lasso (PerkLab)</contributor>
+  <contributor>Antonio Senra Filho (State University of Campinas)</contributor>
   <acknowledgements><![CDATA[This work was funded by the State University of Campinas (Unicamp), Sao Paulo, Brazil.]]></acknowledgements>
   <parameters>
-    <label>Scripting parameters</label>
-    <description><![CDATA[Output parameters]]></description>
+    <label>Input parameters</label>
+    <description><![CDATA[Input parameters]]></description>
     <directory>
       <label>Output Folder</label>
       <longflag>outputFolder</longflag>
-      <index>0</index>
       <description><![CDATA[Output folder where the calculated maps are saved. The user is responsible to inform where is an avaliable folder to save the files (i.e. must be a folder where the user is allowed to read and write files).]]></description>
     </directory>
     <double-vector>
       <name>echos</name>
       <label>Echo Times (TE)</label>
-      <index>1</index>
+      <index>0</index>
       <description><![CDATA[The echo times (TE) used in the ASL imaging protocol. Informs each floating point number separated by single space.]]></description>
     </double-vector>
     <double-vector>
       <name>pld</name>
       <label>Post-Labelling Delays (PLD)</label>
-      <index>2</index>
+      <index>1</index>
       <description><![CDATA[The post-labelling delays (PLD) used in the ASL imaging protocol. Informs each floating point number separated by single space.]]></description>
     </double-vector>
     <double-vector>
       <name>ld</name>
       <label>Labelling Duration (LD)</label>
-      <index>3</index>
+      <index>2</index>
       <description><![CDATA[The labelling duration (LD) used in the ASL imaging protocol. Informs each floating point number separated by single space.]]></description>
     </double-vector>
     <image>
       <name>outputVolume</name>
       <label>Output T Blood-GM Map</label>
       <channel>output</channel>
-      <index>4</index>
+      <index>3</index>
       <description><![CDATA[Output T blood-GM map obtained from the multi echo ASL processing.]]></description>
     </image>
     <file fileExtensions=".nii,.nii.gz">
     <name>inputASL</name>
       <label>Input ASL file</label>
       <longflag>inputASL</longflag>
-      <index>0</index>
-      <description><![CDATA[Input ASL file in .nii or nii.gz format]]></description>
+      <description><![CDATA[Input ASL file path in .nii or nii.gz format]]></description>
     </file>
     <file fileExtensions=".nii,.nii.gz">
     <name>inputM0</name>
       <label>Input M0</label>
       <longflag>inputM0</longflag>
-      <index>0</index>
-      <description><![CDATA[Input the M0 file to use as the reference signal for ASL computation. Provide the M0 file in .nii or nii.gz format]]></description>
+      <description><![CDATA[Input the M0 file path to use as the reference signal for ASL computation. Provide the M0 file in .nii or nii.gz format]]></description>
     </file>
     <file fileExtensions=".nii,.nii.gz">
     <name>labelMask</name>
       <label>Input brain mask</label>
       <longflag>brainMask</longflag>
-      <index>0</index>
-      <description><![CDATA[Input the brain mask informing the ROI where the calculations will be applied. If empty, the entire image is used for the calculations (requires a longer processing time). Any pixel value different from zero is adopted as a valid brain label. Use brain mask file in .nii or nii.gz format]]></description>
+      <description><![CDATA[Input the brain mask file path. If empty, the entire image is used for the calculations (requires a longer processing time). Any pixel value different from zero is adopted as a valid brain label. Use brain mask file in .nii or nii.gz format]]></description>
     </file>
     <double>
       <name>t2b</name>
       <label>T2 Blood (ms)</label>
-      <index>5</index>
+      <index>4</index>
       <default>165.0</default>
       <constraints>
         <minimum>0.01</minimum>
-        <maximum>1000.00</maximum>
+        <maximum>500.00</maximum>
         <step>0.01</step>
       </constraints>
       <description><![CDATA[The T2 value for the blood. By default, the value of 165 ms is assumed.]]></description>
@@ -79,11 +75,11 @@
     <double>
       <name>t2gm</name>
       <label>T2 Gray Matter (ms)</label>
-      <index>6</index>
+      <index>5</index>
       <default>75.0</default>
       <constraints>
         <minimum>0.01</minimum>
-        <maximum>1000.00</maximum>
+        <maximum>500.00</maximum>
         <step>0.01</step>
       </constraints>
       <description><![CDATA[The T2 value for the blood. By default, the value of 75 ms is assumed.]]></description>
