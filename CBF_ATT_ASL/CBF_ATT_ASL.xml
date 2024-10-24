@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<executable>
+  <category>Arterial Sping Labelling</category>
+  <index>0</index>
+  <title>CBF/ATT ASL</title>
+  <description><![CDATA[Calculates the CBF/ATT ASL image reconstruction.]]></description>
+  <version>0.1.0.</version>
+  <documentation-url>https://github.com/LOAMRI/Slicer-ASLtoolkit</documentation-url>
+  <license/>
+  <contributor>Antonio Senra Filho (State University of Campinas)</contributor>
+  <acknowledgements><![CDATA[This work was funded by the State University of Campinas (Unicamp), Sao Paulo, Brazil.]]></acknowledgements>
+  <parameters>
+    <label>Input parameters</label>
+    <description><![CDATA[Input parameters]]></description>
+    <directory>
+      <label>Output Folder</label>
+      <longflag>outputFolder</longflag>
+      <description><![CDATA[Output folder where the calculated maps are saved. The user is responsible to inform where is an avaliable folder to save the files (i.e. must be a folder where the user is allowed to read and write files).]]></description>
+    </directory>
+    <double-vector>
+      <name>pld</name>
+      <label>Post-Labelling Delays (PLD)</label>
+      <index>1</index>
+      <description><![CDATA[The post-labelling delays (PLD) used in the ASL imaging protocol. Informs each floating point number separated by single space.]]></description>
+    </double-vector>
+    <double-vector>
+      <name>ld</name>
+      <label>Labelling Duration (LD)</label>
+      <index>2</index>
+      <description><![CDATA[The labelling duration (LD) used in the ASL imaging protocol. Informs each floating point number separated by single space.]]></description>
+    </double-vector>
+    <image>
+      <name>outputCBF</name>
+      <label>Output CBF Map</label>
+      <channel>output</channel>
+      <index>3</index>
+      <description><![CDATA[Output CBF map obtained from the multi echo ASL processing.]]></description>
+    </image>
+    <boolean>
+      <name>normalizedCBF</name>
+      <label>Set CBF to mL/100 g/min scale</label>
+      <index>4</index>
+      <default>true</default>
+      <description><![CDATA[Set if output CBF map is at normalized voxel value in milliliters of blood per 100 grams of brain tissue per minute (mL/100 g/min).]]></description>
+    </boolean>
+    <image>
+      <name>outputATT</name>
+      <label>Output ATT Map</label>
+      <channel>output</channel>
+      <index>5</index>
+      <description><![CDATA[Output ATT map obtained from the ASL processing.]]></description>
+    </image>
+    <file fileExtensions=".nii,.nii.gz">
+    <name>inputASL</name>
+      <label>Input ASL file</label>
+      <longflag>inputASL</longflag>
+      <description><![CDATA[Input ASL file path in .nii or nii.gz format]]></description>
+    </file>
+    <file fileExtensions=".nii,.nii.gz">
+    <name>inputM0</name>
+      <label>Input M0</label>
+      <longflag>inputM0</longflag>
+      <description><![CDATA[Input the M0 file path to use as the reference signal for ASL computation. Provide the M0 file in .nii or nii.gz format]]></description>
+    </file>
+    <file fileExtensions=".nii,.nii.gz">
+    <name>labelMask</name>
+      <label>Input brain mask</label>
+      <longflag>brainMask</longflag>
+      <description><![CDATA[Input the brain mask file path. If empty, the entire image is used for the calculations (requires a longer processing time). Any pixel value different from zero is adopted as a valid brain label. Use brain mask file in .nii or nii.gz format]]></description>
+    </file>
+  </parameters>
+</executable>
