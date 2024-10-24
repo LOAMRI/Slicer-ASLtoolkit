@@ -6,8 +6,8 @@ project(Slicer_ASLtoolkit)
 # Extension meta-information
 set(EXTENSION_HOMEPAGE "https://www.slicer.org/wiki/Documentation/Nightly/Extensions/Slicer_ASLtoolkit")
 set(EXTENSION_CATEGORY "Arterial Sping Labelling")
-set(EXTENSION_CONTRIBUTORS "John Doe (AnyWare Corp.)")
-set(EXTENSION_DESCRIPTION "This is an example of a simple extension")
+set(EXTENSION_CONTRIBUTORS "Antonio Senra Filho (State University of Campinas), Andre M. Paschoal (State University of Campinas)")
+set(EXTENSION_DESCRIPTION "This extension offers image processing techniques for Arterial Sping Labeling (ASL) MRI imaging.")
 set(EXTENSION_ICONURL "https://www.example.com/Slicer/Extensions/Slicer_ASLtoolkit.png")
 set(EXTENSION_SCREENSHOTURLS "https://www.example.com/Slicer/Extensions/Slicer_ASLtoolkit/Screenshots/1.png")
 set(EXTENSION_DEPENDS "NA") # Specified as a list or "NA" if no dependencies
