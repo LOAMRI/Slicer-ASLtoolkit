@@ -15,10 +15,13 @@ The full documentation of the usage, implementation and updates in the `asltk` l
 The ASLtoolkit extension is a simple way to collect ASL quantitatve output mappings using a GUI interface. The images below represents some examples:
 
 ![CBF map](assets/cbf_map.png){ width="300" .center}
+A CBF map example, using multi PLD ASL imaging acquisition
 
 ![ATT map](assets/att_map.png){ width="300" .center}
+A ATT map example, using multi PLD ASL imaging acquisition
 
 ![T1 blood-GM map](assets/t1_blood_gm_map.png){ width="300" .center}
+A T1 blood-GM map example, using the Multi TE ASL imaging acquisition
 
 
 ## Modules
@@ -43,4 +46,4 @@ We hope that the `ASLtoolkit` can be helpful for your applications. If possible,
 
 ## License
 
-This project is under MIT license and following details are given at the [LICENCE](https://github.com/LOAMRI/Slicer-ASLtoolkit/blob/main/LICENSE) file in the project repository.
+This project is under MIT license and following details are given at the [LICENSE](https://github.com/LOAMRI/Slicer-ASLtoolkit/blob/main/LICENSE) file in the project repository.
