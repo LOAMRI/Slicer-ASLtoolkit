@@ -8,7 +8,7 @@ set(EXTENSION_HOMEPAGE "https://www.slicer.org/wiki/Documentation/Nightly/Extens
 set(EXTENSION_CATEGORY "Arterial Sping Labelling")
 set(EXTENSION_CONTRIBUTORS "Antonio Senra Filho (State University of Campinas), Andre M. Paschoal (State University of Campinas)")
 set(EXTENSION_DESCRIPTION "This extension offers image processing techniques for Arterial Sping Labeling (ASL) MRI imaging.")
-set(EXTENSION_ICONURL "https://www.example.com/Slicer/Extensions/Slicer_ASLtoolkit.png")
+set(EXTENSION_ICONURL "https://raw.githubusercontent.com/LOAMRI/Slicer-ASLtoolkit/refs/heads/develop/Slicer_ASLtoolkit.png")
 set(EXTENSION_SCREENSHOTURLS "https://www.example.com/Slicer/Extensions/Slicer_ASLtoolkit/Screenshots/1.png")
 set(EXTENSION_DEPENDS "NA") # Specified as a list or "NA" if no dependencies
 
