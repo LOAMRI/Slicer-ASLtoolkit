@@ -26,11 +26,6 @@ theme:
 markdown_extensions:
   - admonition
   - attr_list
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
   - footnotes
 
 extra_css:
