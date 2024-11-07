@@ -44,4 +44,4 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
-          paths: [asltk]
+          paths: [Slicer_ASLtoolkit]
