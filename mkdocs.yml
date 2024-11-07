@@ -1,0 +1,47 @@
+site_name: ASLtoolkit
+repo_url: https://github.com/LOAMRI/Slicer-ASLtoolkit
+repo_name: LOAMRI/Slicer-ASLtoolkit
+edit_uri: tree/main/docs
+
+theme:
+  name: readthedocs
+  language: en
+  palette:
+    scheme: default
+    primary: custom
+    accent: cyan
+  font:
+    text: Arial
+    code: Roboto Mono
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - content.code.copy
+    - content.footnote.tooltips
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.sections
+    - navigation.expand
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - footnotes
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - 'index.md'
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [asltk]
