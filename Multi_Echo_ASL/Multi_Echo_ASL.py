@@ -30,14 +30,13 @@ try:
     from asltk.reconstruction import MultiTE_ASLMapping
     from asltk.utils import load_image, save_image
 except ModuleNotFoundError:
-  if slicer.util.confirmOkCancelDisplay("This module requires 'asltk' Python package. Click OK to install it now."):
-    slicer.util.pip_install("asltk")
+    import slicer.util
+    slicer.util.pip_install("asltk>=0.1.4<1.0.0")
     from asltk.asldata import ASLData
     from asltk.reconstruction import MultiTE_ASLMapping
     from asltk.utils import load_image, save_image
 
 import numpy as np
-import SimpleITK as sitk
 from rich import print
 
 
