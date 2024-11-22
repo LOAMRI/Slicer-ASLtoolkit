@@ -43,7 +43,7 @@ The `ASLtoolkit` extension can be used directly from the modules in the 3D Slice
 The ASL toolkit extension can be found directly from the Slicer Extension Manager. Search for `ASL toolkit` in the extension browser and select install.
 
 !!! warning
-  This extension is offered, firstly, by the `nightly` Slicer version and then, after a compatibility verification has been performed, it is added to the Slicer `stable` version.
+    This extension is offered, firstly, by the `nightly` Slicer version and then, after a compatibility verification has been performed, it is added to the Slicer `stable` version.
 
 ### Quick tutorial
 
@@ -66,10 +66,10 @@ To assist new users in the usage of the ASL toolkit extension, please follow thi
 5. Once the module GUI is shown, fill in the indicated information and press run
 
 !!! info
-  The `asltk` [Python package](https://pypi.org/project/asltk/) is used in background. If the Slicer Python interpreter do not have the `asltk` package installed, then it will be made automatically. 
+    The `asltk` [Python package](https://pypi.org/project/asltk/) is used in background. If the Slicer Python interpreter do not have the `asltk` package installed, then it will be     made automatically. 
 
 !!! tip
-  The `asltk` package has multitheading algoritm performance. Depending on the machine configuration and capability, the processing time can very considerably. See more details about it on the `asltk` [documentation](https://asltk.readthedocs.io/en/main/).
+    The `asltk` package has multitheading algoritm performance. Depending on the machine configuration and capability, the processing time can very considerably. See more details       about it on the `asltk` [documentation](https://asltk.readthedocs.io/en/main/).
 
 ## Cite this tool
 
