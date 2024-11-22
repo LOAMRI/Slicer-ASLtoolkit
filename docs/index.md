@@ -38,6 +38,39 @@ This module is able to reconstruct the `T1 blood-GM` map from a multi echos (TE)
 
 The `ASLtoolkit` extension can be used directly from the modules in the 3D Slicer module list. Hence, the user can select the required information and also start the mapping calculation. When it is finished, the data is loaded in the Slicer scene viewer.
 
+## How to install
+
+The ASL toolkit extension can be found directly from the Slicer Extension Manager. Search for `ASL toolkit` in the extension browser and select install.
+
+!!! warning
+  This extension is offered, firstly, by the `nightly` Slicer version and then, after a compatibility verification has been performed, it is added to the Slicer `stable` version.
+
+### Quick tutorial
+
+To assist new users in the usage of the ASL toolkit extension, please follow this simple tutorial:
+
+1. Download the sample data (hosted at a [public link from Google Drive](https://drive.google.com/file/d/1agtHY9SLvC9975L6H0RL6PfIHATnJKcI/view))
+
+    - This dataset sample is a pCASL ASL image with a text file giving the PLD, LD and TE values as comma-separated lists
+  
+2. After the dataset sample download, uncompress the zip file to a local folder
+
+3. Open Slicer with the ASL Toolkit extension being already installed
+
+    - Installation instruction is given in the How to install section above.
+  
+4. Search for the `CBF and ATT` or `Multi TE ASL` modules
+
+    - To search for the module one can use the dropdown module list and look at it manually or use the module search toggle.
+  
+5. Once the module GUI is shown, fill in the indicated information and press run
+
+!!! info
+  The `asltk` [Python package](https://pypi.org/project/asltk/) is used in background. If the Slicer Python interpreter do not have the `asltk` package installed, then it will be made automatically. 
+
+!!! tip
+  The `asltk` package has multitheading algoritm performance. Depending on the machine configuration and capability, the processing time can very considerably. See more details about it on the `asltk` [documentation](https://asltk.readthedocs.io/en/main/).
+
 ## Cite this tool
 
 We hope that the `ASLtoolkit` can be helpful for your applications. If possible, recall to cite at least one of the following publications:
