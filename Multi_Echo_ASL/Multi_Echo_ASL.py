@@ -63,10 +63,10 @@ def executeScript(args):
       ld = [float(s) for s in str(args.ld[0]).split()]
 
   if not checkUpParameters():
-    slicer.util.errorDisplay(
+    print(
         'One or more arguments are not well defined. Please, revise the Multi Echo ASL module call.'
     )
-    return
+    exit(1)
 
 
   # Step 2: Show the input information to assist manual conference
@@ -99,21 +99,21 @@ def checkUpParameters():
   is_ok = True
   # Check output folder exist
   if not (os.path.isdir(args.out_folder)):
-    slicer.util.messageBox(
+    print(
        f'Output folder path does not exist (path: {args.out_folder}). Please create the folder before executing the script.'
     )
     is_ok = False
 
   # Check ASL image exist
   if not (os.path.isfile(args.asl)):
-    slicer.util.messageBox(
+    print(
         f'ASL input file does not exist (file path: {args.asl}). Please check the input file before executing the script.'
     )
     is_ok = False
 
   # Check M0  image exist
   if not (os.path.isfile(args.m0)):
-    slicer.util.messageBox(
+    print(
         f'M0 input file does not exist (file path: {args.m0}). Please check the input file before executing the script.'
     )
     is_ok = False
