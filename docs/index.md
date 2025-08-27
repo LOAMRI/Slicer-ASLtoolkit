@@ -75,7 +75,7 @@ To assist new users in the usage of the ASL toolkit extension, please follow thi
 
 We hope that the `ASLtoolkit` can be helpful for your applications. If possible, recall to cite at least one of the following publications:
 
-* Senra Filho, A. C. ; Paschoal, A. M. "Open-Source Multi-Echo (TE) MRI Tool for Arterial Spin Labelling Imaging Protocols". ISMRM & ISMRT Annual Meeting (2025)
+* Senra Filho, A. C. ; Paschoal, A. M. "Open-Source Multi-Echo (TE) MRI Tool for Arterial Spin Labelling Imaging Protocols". ISMRM & ISMRT Annual Meeting (2025). [Link](https://www.researchgate.net/publication/394469211_Open-Source_Multi-Echo_TE_MRI_Tool_for_Arterial_Spin_Labelling_Imaging_Protocols)
 
 ## License
 
