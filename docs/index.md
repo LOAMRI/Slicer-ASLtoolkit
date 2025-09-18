@@ -66,10 +66,10 @@ To assist new users in the usage of the ASL toolkit extension, please follow thi
 5. Once the module GUI is shown, fill in the indicated information and press run
 
 !!! info
-    The `asltk` [Python package](https://pypi.org/project/asltk/) is used in background. If the Slicer Python interpreter do not have the `asltk` package installed, then it will be     made automatically. 
+    The `asltk` [Python package](https://pypi.org/project/asltk/) is used in background. If the Slicer Python interpreter do not have the `asltk` package installed, then it will be made automatically.
 
 !!! tip
-    The `asltk` package has multitheading algoritm performance. Depending on the machine configuration and capability, the processing time can very considerably. See more details       about it on the `asltk` [documentation](https://asltk.readthedocs.io/en/main/).
+    The `asltk` package has multitheading algoritm performance. Depending on the machine configuration and capability, the processing time can very considerably. See more details about it on the `asltk` [documentation](https://asltk.readthedocs.io/en/main/).
 
 ## Cite this tool
 
