@@ -28,13 +28,13 @@ from functools import *
 try:
     from asltk.asldata import ASLData
     from asltk.reconstruction import CBFMapping
-    from asltk.utils import load_image, save_image
+    from asltk.utils.io import load_image, save_image
 except ModuleNotFoundError:
     import slicer.util
-    slicer.util.pip_install("asltk>=0.1.4<1.0.0")
+    slicer.util.pip_install("asltk>=0.7.1<1.0.0")
     from asltk.asldata import ASLData
     from asltk.reconstruction import CBFMapping
-    from asltk.utils import load_image, save_image
+    from asltk.utils.io import load_image, save_image
 
 import numpy as np
 from rich import print
@@ -78,8 +78,15 @@ def executeScript(args):
     print('M0 image dimension: ' + str(m0_img.shape))
     print('PLD: ' + str(pld))
     print('LD: ' + str(ld))
+    print('---- Advanced Options ----')
+    print('Output normalized CBF: ' + str(args.norm_cbf))
+    print('Average M0: ' + str(args.average_m0))
 
-  data = ASLData(pcasl=args.asl, m0=args.m0, ld_values=ld, pld_values=pld)
+  if args.average_m0:
+    data = ASLData(pcasl=args.asl, m0=args.m0, ld_values=ld, pld_values=pld, average_m0=True)
+  else:
+    data = ASLData(pcasl=args.asl, m0=args.m0, ld_values=ld, pld_values=pld, average_m0=False)
+  
   recon = CBFMapping(data)
   recon.set_brain_mask(mask_img)
   maps = recon.create_map()
@@ -132,6 +139,7 @@ if __name__ == '__main__':
         out_cbf= str(sys.argv[11]),
         norm_cbf=bool(sys.argv[12]),
         out_att= str(sys.argv[13]),
+        average_m0=bool(sys.argv[14]),
         verbose=True
     )
     

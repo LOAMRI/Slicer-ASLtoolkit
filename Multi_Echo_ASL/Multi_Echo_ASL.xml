@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <executable>
-  <category>Arterial Sping Labelling</category>
+  <category>Neuroimaging</category>
   <index>0</index>
   <title>Multi Echo ASL</title>
   <description><![CDATA[Calculates the Multi Echo ASL image reconstruction.]]></description>
@@ -21,18 +21,21 @@
       <name>echos</name>
       <label>Echo Times (TE)</label>
       <index>0</index>
+      <default>13.56, 67.82, 122.08, 176.33, 230.59, 284.84, 339.1, 393.36</default>
       <description><![CDATA[The echo times (TE) used in the ASL imaging protocol. Informs each floating point number separated by single space.]]></description>
     </double-vector>
     <double-vector>
       <name>pld</name>
       <label>Post-Labelling Delays (PLD)</label>
       <index>1</index>
+      <default>170.0, 270.0, 370.0, 520.0, 670.0, 1070.0, 1870.0</default>
       <description><![CDATA[The post-labelling delays (PLD) used in the ASL imaging protocol. Informs each floating point number separated by single space.]]></description>
     </double-vector>
     <double-vector>
       <name>ld</name>
       <label>Labelling Duration (LD)</label>
       <index>2</index>
+      <default>100.0, 100.0, 150.0, 150.0, 400.0, 800.0, 1800.0</default>
       <description><![CDATA[The labelling duration (LD) used in the ASL imaging protocol. Informs each floating point number separated by single space.]]></description>
     </double-vector>
     <image>
@@ -60,6 +63,17 @@
       <longflag>brainMask</longflag>
       <description><![CDATA[Input the brain mask file path. If empty, the entire image is used for the calculations (requires a longer processing time). Any pixel value different from zero is adopted as a valid brain label. Use brain mask file in .nii or nii.gz format]]></description>
     </file>
+  </parameters>
+  <parameters>
+    <label>Advanced Options</label>
+    <description><![CDATA[Advanced Options]]></description>
+    <boolean>
+      <name>averageM0</name>
+      <label>Average M0</label>
+      <index>6</index>
+      <default>false</default>
+      <description><![CDATA[Indicates if an average calculation must be performed on the M0 images. This is common practice in ASL processing to improve SNR.]]></description>
+    </boolean>
     <double>
       <name>t2b</name>
       <label>T2 Blood (ms)</label>

@@ -28,13 +28,13 @@ from functools import *
 try:
     from asltk.asldata import ASLData
     from asltk.reconstruction import MultiTE_ASLMapping
-    from asltk.utils import load_image, save_image
+    from asltk.utils.io import load_image, save_image
 except ModuleNotFoundError:
     import slicer.util
-    slicer.util.pip_install("asltk>=0.1.4<1.0.0")
+    slicer.util.pip_install("asltk>=0.7.1<1.0.0")
     from asltk.asldata import ASLData
     from asltk.reconstruction import MultiTE_ASLMapping
-    from asltk.utils import load_image, save_image
+    from asltk.utils.io import load_image, save_image
 
 import numpy as np
 from rich import print
@@ -81,10 +81,21 @@ def executeScript(args):
     print('PLD: ' + str(pld))
     print('LD: ' + str(ld))
     print('TE: ' + str(te))
+    print('---- Advanced Options ----')
+    print('T2 Blood: ' + str(args.t2b))
+    print('T2 GM: ' + str(args.t2gm))
+    print('Average M0: ' + str(args.average_m0))
 
-  data = ASLData(
-     pcasl=args.asl, m0=args.m0, ld_values=ld, pld_values=pld, te_values=te
+  if args.average_m0:
+    data = ASLData(
+     pcasl=args.asl, m0=args.m0, ld_values=ld, pld_values=pld, te_values=te,
+     average_m0=True
      )
+  else:
+    data = ASLData(
+      pcasl=args.asl, m0=args.m0, ld_values=ld, pld_values=pld, te_values=te,
+      average_m0=False
+      )
   recon = MultiTE_ASLMapping(data)
   recon.set_brain_mask(mask_img)
   maps = recon.create_map()
@@ -136,6 +147,7 @@ if __name__ == '__main__':
         out_tblgm= str(sys.argv[12]),
         t2b= float(sys.argv[13]),
         t2gm= float(sys.argv[14]),
+        average_m0=bool(sys.argv[15]),
         verbose=True
     )
     

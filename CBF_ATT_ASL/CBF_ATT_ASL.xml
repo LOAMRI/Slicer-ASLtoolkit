@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <executable>
-  <category>Arterial Sping Labelling</category>
+  <category>Neuroimaging</category>
   <index>0</index>
   <title>CBF/ATT ASL</title>
   <description><![CDATA[Calculates the CBF/ATT ASL image reconstruction.]]></description>
@@ -21,12 +21,14 @@
       <name>pld</name>
       <label>Post-Labelling Delays (PLD)</label>
       <index>1</index>
+      <default>170.0, 270.0, 370.0, 520.0, 670.0, 1070.0, 1870.0</default>
       <description><![CDATA[The post-labelling delays (PLD) used in the ASL imaging protocol. Informs each floating point number separated by single space.]]></description>
     </double-vector>
     <double-vector>
       <name>ld</name>
       <label>Labelling Duration (LD)</label>
       <index>2</index>
+      <default>100.0, 100.0, 150.0, 150.0, 400.0, 800.0, 1800.0</default>
       <description><![CDATA[The labelling duration (LD) used in the ASL imaging protocol. Informs each floating point number separated by single space.]]></description>
     </double-vector>
     <image>
@@ -36,13 +38,6 @@
       <index>3</index>
       <description><![CDATA[Output CBF map obtained from the multi echo ASL processing.]]></description>
     </image>
-    <boolean>
-      <name>normalizedCBF</name>
-      <label>Set CBF to mL/100 g/min scale</label>
-      <index>4</index>
-      <default>true</default>
-      <description><![CDATA[Set if output CBF map is at normalized voxel value in milliliters of blood per 100 grams of brain tissue per minute (mL/100 g/min).]]></description>
-    </boolean>
     <image>
       <name>outputATT</name>
       <label>Output ATT Map</label>
@@ -68,5 +63,23 @@
       <longflag>brainMask</longflag>
       <description><![CDATA[Input the brain mask file path. If empty, the entire image is used for the calculations (requires a longer processing time). Any pixel value different from zero is adopted as a valid brain label. Use brain mask file in .nii or nii.gz format]]></description>
     </file>
+  </parameters>
+  <parameters>
+    <label>Advanced Options</label>
+    <description><![CDATA[Advanced Options]]></description>
+    <boolean>
+      <name>normalizedCBF</name>
+      <label>Set CBF to mL/100 g/min scale</label>
+      <index>4</index>
+      <default>true</default>
+      <description><![CDATA[Set if output CBF map is at normalized voxel value in milliliters of blood per 100 grams of brain tissue per minute (mL/100 g/min).]]></description>
+    </boolean>
+    <boolean>
+      <name>averageM0</name>
+      <label>Average M0</label>
+      <index>6</index>
+      <default>false</default>
+      <description><![CDATA[Indicates if an average calculation must be performed on the M0 images. This is common practice in ASL processing to improve SNR.]]></description>
+    </boolean>
   </parameters>
 </executable>
