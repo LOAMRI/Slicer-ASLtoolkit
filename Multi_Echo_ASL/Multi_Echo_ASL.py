@@ -147,7 +147,7 @@ if __name__ == '__main__':
         out_tblgm= str(sys.argv[12]),
         t2b= float(sys.argv[13]),
         t2gm= float(sys.argv[14]),
-        average_m0=bool(sys.argv[15]),
+        average_m0=True if sys.argv[15] == 'true' else False,
         verbose=True
     )
     

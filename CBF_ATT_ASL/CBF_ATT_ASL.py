@@ -139,7 +139,7 @@ if __name__ == '__main__':
         out_cbf= str(sys.argv[11]),
         norm_cbf=bool(sys.argv[12]),
         out_att= str(sys.argv[13]),
-        average_m0=bool(sys.argv[14]),
+        average_m0= True if sys.argv[14] == 'true' else False,
         verbose=True
     )
     
