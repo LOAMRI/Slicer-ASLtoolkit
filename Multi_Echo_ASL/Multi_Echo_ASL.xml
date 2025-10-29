@@ -3,46 +3,47 @@
   <category>Neuroimaging</category>
   <index>0</index>
   <title>Multi Echo ASL</title>
-  <description><![CDATA[Calculates the Multi Echo ASL image reconstruction.]]></description>
+  <description><![CDATA[Calculates the Multi Echo ASL image reconstruction.
+
+CLI Usage: When running from command line, you can also use the --outputFolder flag to specify the output directory:
+  Slicer --launch /path/to/Multi_Echo_ASL.py --inputASL asl.nii --inputM0 m0.nii --outputFolder /output/path --outputVolume t1blgm.nii --echos 13.56,67.82,122.08,176.33,230.59,284.84,339.1,393.36 --pld 170.0,270.0,370.0,520.0,670.0,1070.0,1870.0 --ld 100.0,100.0,150.0,150.0,400.0,800.0,1800.0
+
+Note: The --outputFolder parameter is only available when running as a CLI module from terminal and is not shown in the GUI. If the user calls the CLI module but will not provide the --outputFolder flag, then the home directory is assumed to output the generated files.]]></description>
   <version>0.1.0.</version>
-  <documentation-url>https://github.com/LOAMRI/Slicer-ASLtoolkit</documentation-url>
+  <documentation-url>https://slicer-asltoolkit.readthedocs.io</documentation-url>
   <license/>
   <contributor>Antonio Senra Filho (State University of Campinas)</contributor>
   <acknowledgements><![CDATA[This work was funded by the State University of Campinas (Unicamp), Sao Paulo, Brazil.]]></acknowledgements>
   <parameters>
     <label>Input parameters</label>
     <description><![CDATA[Input parameters]]></description>
-    <directory>
-      <label>Output Folder</label>
-      <longflag>outputFolder</longflag>
-      <description><![CDATA[Output folder where the calculated maps are saved. The user is responsible to inform where is an avaliable folder to save the files (i.e. must be a folder where the user is allowed to read and write files).]]></description>
-    </directory>
+    
     <double-vector>
       <name>echos</name>
       <label>Echo Times (TE)</label>
-      <index>0</index>
+      <longflag>echos</longflag>
       <default>13.56, 67.82, 122.08, 176.33, 230.59, 284.84, 339.1, 393.36</default>
       <description><![CDATA[The echo times (TE) used in the ASL imaging protocol. Informs each floating point number separated by single space.]]></description>
     </double-vector>
     <double-vector>
       <name>pld</name>
       <label>Post-Labelling Delays (PLD)</label>
-      <index>1</index>
+      <longflag>pld</longflag>
       <default>170.0, 270.0, 370.0, 520.0, 670.0, 1070.0, 1870.0</default>
       <description><![CDATA[The post-labelling delays (PLD) used in the ASL imaging protocol. Informs each floating point number separated by single space.]]></description>
     </double-vector>
     <double-vector>
       <name>ld</name>
       <label>Labelling Duration (LD)</label>
-      <index>2</index>
+      <longflag>ld</longflag>
       <default>100.0, 100.0, 150.0, 150.0, 400.0, 800.0, 1800.0</default>
       <description><![CDATA[The labelling duration (LD) used in the ASL imaging protocol. Informs each floating point number separated by single space.]]></description>
     </double-vector>
     <image>
       <name>outputVolume</name>
       <label>Output T Blood-GM Map</label>
+      <longflag>outputVolume</longflag>
       <channel>output</channel>
-      <index>3</index>
       <description><![CDATA[Output T blood-GM map obtained from the multi echo ASL processing.]]></description>
     </image>
     <file fileExtensions=".nii,.nii.gz">
@@ -70,14 +71,14 @@
     <boolean>
       <name>averageM0</name>
       <label>Average M0</label>
-      <index>6</index>
+      <longflag>averageM0</longflag>
       <default>false</default>
       <description><![CDATA[Indicates if an average calculation must be performed on the M0 images. This is common practice in ASL processing to improve SNR.]]></description>
     </boolean>
     <double>
       <name>t2b</name>
       <label>T2 Blood (ms)</label>
-      <index>4</index>
+      <longflag>t2b</longflag>
       <default>165.0</default>
       <constraints>
         <minimum>0.01</minimum>
@@ -89,7 +90,7 @@
     <double>
       <name>t2gm</name>
       <label>T2 Gray Matter (ms)</label>
-      <index>5</index>
+      <longflag>t2gm</longflag>
       <default>75.0</default>
       <constraints>
         <minimum>0.01</minimum>
@@ -98,5 +99,29 @@
       </constraints>
       <description><![CDATA[The T2 value for the blood. By default, the value of 75 ms is assumed.]]></description>
     </double>
+    <integer>
+      <name>numThreads</name>
+      <label>Number of Threads</label>
+      <longflag>numThreads</longflag>
+      <default>-1</default>
+      <description><![CDATA[Number of threads to be used during processing. More threads may speed up the processing on computers with multiple cores. The default value (-1) means to use all available cores.]]></description>
+    </integer>
+    <string-enumeration>
+      <name>smoothMethod</name>
+      <label>Smoothing Method</label>
+      <longflag>smoothMethod</longflag>
+      <description><![CDATA[Select the smoothing method to be applied prior to the T blood-GM calculation.]]></description>
+      <element>None</element>
+      <element>Gaussian</element>
+      <element>Median</element>
+      <default>None</default>
+    </string-enumeration>
+    <float>
+      <name>smoothParameter</name>
+      <label>Smoothing Parameter</label>
+      <longflag>smoothParameter</longflag>
+      <default>3.0</default>
+      <description><![CDATA[Defines the smoothing parameter based on the smoothing method. If Gaussian was chosen, the parameter represents the sigma value. If Median was chosen, the parameter represents the kernel size (must be an odd number).]]></description>
+    </float>
   </parameters>
 </executable>
