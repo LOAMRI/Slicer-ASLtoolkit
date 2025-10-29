@@ -3,46 +3,46 @@
   <category>Neuroimaging</category>
   <index>0</index>
   <title>CBF/ATT ASL</title>
-  <description><![CDATA[Calculates the CBF/ATT ASL image reconstruction.]]></description>
+  <description><![CDATA[Calculates the CBF/ATT ASL image reconstruction.
+
+CLI Usage: When running from command line, you can also use the --outputFolder flag to specify the output directory:
+  Slicer --launch /path/to/CBF_ATT_ASL.py --inputASL asl.nii --inputM0 m0.nii --outputFolder /output/path --outputCBF cbf.nii --outputATT att.nii --pld 170.0,270.0,370.0 --ld 100.0,100.0,150.0
+
+Note: The --outputFolder parameter is only available when running as a CLI module from terminal and is not shown in the GUI. If the user calls the CLI module but will not provide the --outputFolder flag, then the home directory is assumed to output the generated files.]]></description>
   <version>0.1.0.</version>
-  <documentation-url>https://github.com/LOAMRI/Slicer-ASLtoolkit</documentation-url>
+  <documentation-url>https://slicer-asltoolkit.readthedocs.io</documentation-url>
   <license/>
   <contributor>Antonio Senra Filho (State University of Campinas)</contributor>
   <acknowledgements><![CDATA[This work was funded by the State University of Campinas (Unicamp), Sao Paulo, Brazil.]]></acknowledgements>
   <parameters>
     <label>Input parameters</label>
     <description><![CDATA[Input parameters]]></description>
-    <directory>
-      <label>Output Folder</label>
-      <longflag>outputFolder</longflag>
-      <description><![CDATA[Output folder where the calculated maps are saved. The user is responsible to inform where is an avaliable folder to save the files (i.e. must be a folder where the user is allowed to read and write files).]]></description>
-    </directory>
     <double-vector>
       <name>pld</name>
       <label>Post-Labelling Delays (PLD)</label>
-      <index>1</index>
+      <longflag>pld</longflag>
       <default>170.0, 270.0, 370.0, 520.0, 670.0, 1070.0, 1870.0</default>
       <description><![CDATA[The post-labelling delays (PLD) used in the ASL imaging protocol. Informs each floating point number separated by single space.]]></description>
     </double-vector>
     <double-vector>
       <name>ld</name>
       <label>Labelling Duration (LD)</label>
-      <index>2</index>
+      <longflag>ld</longflag>
       <default>100.0, 100.0, 150.0, 150.0, 400.0, 800.0, 1800.0</default>
       <description><![CDATA[The labelling duration (LD) used in the ASL imaging protocol. Informs each floating point number separated by single space.]]></description>
     </double-vector>
     <image>
       <name>outputCBF</name>
       <label>Output CBF Map</label>
+      <longflag>outputCBF</longflag>
       <channel>output</channel>
-      <index>3</index>
       <description><![CDATA[Output CBF map obtained from the multi echo ASL processing.]]></description>
     </image>
     <image>
       <name>outputATT</name>
       <label>Output ATT Map</label>
+      <longflag>outputATT</longflag>
       <channel>output</channel>
-      <index>5</index>
       <description><![CDATA[Output ATT map obtained from the ASL processing.]]></description>
     </image>
     <file fileExtensions=".nii,.nii.gz">
@@ -70,16 +70,40 @@
     <boolean>
       <name>normalizedCBF</name>
       <label>Set CBF to mL/100 g/min scale</label>
-      <index>4</index>
+      <longflag>normalizedCBF</longflag>
       <default>true</default>
       <description><![CDATA[Set if output CBF map is at normalized voxel value in milliliters of blood per 100 grams of brain tissue per minute (mL/100 g/min).]]></description>
     </boolean>
     <boolean>
       <name>averageM0</name>
       <label>Average M0</label>
-      <index>6</index>
+      <longflag>averageM0</longflag>
       <default>false</default>
       <description><![CDATA[Indicates if an average calculation must be performed on the M0 images. This is common practice in ASL processing to improve SNR.]]></description>
     </boolean>
+    <integer>
+      <name>numThreads</name>
+      <label>Number of Threads</label>
+      <longflag>numThreads</longflag>
+      <default>-1</default>
+      <description><![CDATA[Number of threads to be used during processing. More threads may speed up the processing on computers with multiple cores. The default value (-1) means to use all available cores.]]></description>
+    </integer>
+    <string-enumeration>
+      <name>smoothMethod</name>
+      <label>Smoothing Method</label>
+      <longflag>smoothMethod</longflag>
+      <description><![CDATA[Select the smoothing method to be applied to the ASL images prior to the CBF/ATT calculation.]]></description>
+      <element>None</element>
+      <element>Gaussian</element>
+      <element>Median</element>
+      <default>None</default>
+    </string-enumeration>
+    <float>
+      <name>smoothParameter</name>
+      <label>Smoothing Parameter</label>
+      <longflag>smoothParameter</longflag>
+      <default>3.0</default>
+      <description><![CDATA[Defines the smoothing parameter based on the smoothing method. If Gaussian was choosen, than the parameter represents the sigma value. If the Median filter was chosen, then the parameter represents the kernel size (must be an odd number).]]></description>
+    </float>
   </parameters>
 </executable>
