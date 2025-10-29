@@ -31,7 +31,7 @@ try:
     from asltk.utils.io import load_image, save_image
 except ModuleNotFoundError:
     import slicer.util
-    slicer.util.pip_install("asltk>=0.7.1<1.0.0")
+    slicer.util.pip_install("asltk==0.7.1")
     from asltk.asldata import ASLData
     from asltk.reconstruction import MultiTE_ASLMapping
     from asltk.utils.io import load_image, save_image
