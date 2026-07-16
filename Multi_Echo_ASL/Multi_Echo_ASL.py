@@ -28,13 +28,13 @@ from functools import *
 try:
     from asltk.asldata import ASLData
     from asltk.reconstruction import MultiTE_ASLMapping
-    from asltk.utils.io import load_image, save_image
+    from asltk.utils.io import ImageIO
 except ModuleNotFoundError:
     import slicer.util
-    slicer.util.pip_install("asltk==1.1.0")
+    slicer.util.pip_install("asltk==1.1.3")
     from asltk.asldata import ASLData
     from asltk.reconstruction import MultiTE_ASLMapping
-    from asltk.utils.io import load_image, save_image
+    from asltk.utils.io import ImageIO
 
 import numpy as np
 from rich import print
@@ -59,13 +59,13 @@ def executeScript(args):
   print('</filter-start>')
 
   print('<filter-progress>0.1</filter-progress>')
-  asl_img = load_image(args.asl)
-  m0_img = load_image(args.m0)
+  asl_img = ImageIO(args.asl)
+  m0_img = ImageIO(args.m0)
 
   print('<filter-progress>0.2</filter-progress>')
-  mask_img = np.ones(asl_img[0, 0, :, :, :].shape)
+  mask_img = np.ones(asl_img.get_as_numpy()[0, 0, :, :, :].shape)
   if args.mask != '':
-      mask_img = load_image(args.mask)
+      mask_img = ImageIO(args.mask)
 
   print('<filter-progress>0.3</filter-progress>')
   try:
@@ -93,14 +93,14 @@ def executeScript(args):
   if args.verbose:
     print(' --- Multi Echo ASL Input Data ---')
     print('ASL file path: ' + args.asl)
-    print('ASL image dimension: ' + str(asl_img.shape))
+    print('ASL image dimension: ' + str(asl_img.get_as_numpy().shape))
     print('Mask file path: ' + args.mask)
     if args.mask != '':
-      print('Mask image dimension: ' + str(mask_img.shape))
+      print('Mask image dimension: ' + str(mask_img.get_as_numpy().shape))
     else:
       print('No brain mask provided, assuming full-image processing.')
     print('M0 file path: ' + args.m0)
-    print('M0 image dimension: ' + str(m0_img.shape))
+    print('M0 image dimension: ' + str(m0_img.get_as_numpy().shape))
     print('PLD: ' + str(pld))
     print('LD: ' + str(ld))
     print('TE: ' + str(te))
@@ -135,7 +135,7 @@ def executeScript(args):
 
   print('<filter-progress>0.9</filter-progress>')
   print('<filter-comment>Saving output files...</filter-comment>')
-  save_image(maps['t1blgm'], args.out_tblgm)
+  maps['t1blgm'].save_image(args.out_tblgm)
 
   print('<filter-progress>1.0</filter-progress>')
   print('<filter-end>')
